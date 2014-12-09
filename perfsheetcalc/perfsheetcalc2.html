@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+	<head>
+		<title>Perforated Sheet Calculator</title>
+		<link href ="bootstrap_3.3.1/css/bootstrap.min.css" type = "text/css" rel = "stylesheet">
+	</head>
+	
+	<body>
+		<div class="page-header">
+			<h1>Calculate</h1>
+		</div>
+		<div class = "container.fluid">
+			 <div class ="row">
+				 <div class = "col-xs-4"><!-- Left Column -->				
+					<form role = "form"> 
+						<div class = "form-group"><!-- Sheet Name Form Group -->
+							<label for = "sheetname">Sheet Name</label>
+							<div class ="input-group"><!-- Sheet Name Input Group -->
+								<input type = "text" class="form-control" id = "sheetname" placeholder = "Sheet Name">
+							</div>
+						</div>
+						
+						<div class = "form-group"><!-- Length Form Group -->
+							<label for = "length">Length</label>
+							<div class ="input-group"><!-- Length Input Group -->
+								<input type = "text" class="form-control" id = "length" placeholder = "Length">
+								<div class = "input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">mm <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">mm</a></li>
+									  <li><a href="#">cm</a></li>
+									  <li><a href="#">inches</a></li>
+									  <li><a href="#">feet</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>	
+							
+						<div class = "form-group"><!-- Width Form Group -->
+							<label for = "width">Width</label>
+							<div class = "input-group"><!-- Width Input Group -->
+								<input type = "text" class="form-control" id = "width" placeholder = "Width">
+								<div class = "input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">mm <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">mm</a></li>
+									  <li><a href="#">cm</a></li>
+									  <li><a href="#">inches</a></li>
+									  <li><a href="#">feet</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>	
+						
+						<div class = "form-group"><!-- Material Thickness Form Group -->
+							<label for = "thickness">Material Thickness</label>
+							<div class = "input-group"><!-- Material Thickness Input Group -->
+								<input type = "text" class="form-control" id = "thickness" placeholder = "Thickness">
+								<div class = "input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">mm <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">mm</a></li>
+									  <li><a href="#">gauge</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class = "form-group"><!-- SW Form Group -->
+							<label for = "sw">SW</label>
+							<div class = "input-group"><!-- SW Input Group -->
+								<input type = "text" class="form-control" id = "sw" placeholder = "SW">
+								<div class = "input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">mm <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">mm</a></li>
+									  <li><a href="#">cm</a></li>
+									  <li><a href="#">inches</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class = "form-group"> <!-- Pitch Form Group -->	
+							<label for = "pitch">Pitch</label>
+							<div class = "input-group"><!-- Pitch Input Group -->
+								<input type = "text" class="form-control" id = "pitch" placeholder = "Pitch">
+								<div class = "input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">mm <span class="caret"></span></button>
+									<ul class="dropdown-menu" role="menu">
+									  <li><a href="#">mm</a></li>
+									  <li><a href="#">cm</a></li>
+									  <li><a href="#">inches</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>			
+					
+					<br><br>
+					
+					<div class="btn-group" data-toggle="buttons"><!-- Perf Selectors -->
+						<label class="btn btn-primary active">
+							<input type="radio" name="perfSelector" id="hexagonal" autocomplete ="off" checked>
+							Hexagonal
+						</label>
+							
+						<label class="btn btn-primary">
+							<input type="radio" name="perfSelector" id="round" autocomplete="off">
+							Round
+						</label>
+					</div>
+					
+					<br><br>
+														
+					<div class="btn-group" data-toggle="buttons"><!-- Material Selectors -->
+						<label class="btn btn-primary active">
+							<input type="radio" name="matSelector" id="steel" autocomplete ="off" checked>
+							Steel
+						</label>
+					
+						<label class="btn btn-primary">
+							<input type="radio" name="matSelector" id="aluminum" autocomplete="off">
+							Aluminum
+						</label>
+					</div>
+				</div>
+				
+				<div class "col-md-8"><!-- Right Column -->
+					<div id="sheetNameResult"></div>
+					<div id="volumeResult"></div>
+					<div id="weightResult"></div>
+					<div id="openAreaResult"></div>
+				</div>
+			</div>
+		</div>
+		
+	<div><!--Javascript References-->
+		<script src ="jquery-1.11.1.min.js"></script>
+		<script src="bootstrap_3.3.1/js/bootstrap.min.js"></script>
+		<script src="calculateall.js"></script>
+	</div>
+
+	</body>
+	
+</html>
