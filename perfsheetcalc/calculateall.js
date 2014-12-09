@@ -33,7 +33,7 @@ function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
                 return (sw * sw * 90.89) / (pitch * pitch);
         }
     };
-};
+}
 setPerfSheet = function (){
 	var l = document.getElementById("length");			//Length Input
 	var w = document.getElementById("width");			//Width Input
