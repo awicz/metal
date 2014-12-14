@@ -1,4 +1,4 @@
-<div class="grid-12 gutter-10">
+<div class="grid-12 gutter-30">
 	<div class="span-4">
 		<fieldset>
 			<legend>Sheet Calculation</legend>
@@ -6,19 +6,58 @@
 				<ul>
 					<li>
 						<label>Length</label>
-						<input type="text">
+						<input type="text" id="length">
+						<input name="lengthUnitSelector" type="radio" id="mmLengthUnit" checked>
+						<label for="mmLengthUnit">mm</label>
+						<input name="lengthUnitSelector" type="radio" id="inchLengthUnit">
+						<label for="inchLengthUnit">inches</label>
 					</li>
 					<li>
 						<label>Width</label>
-						<input type="text">
+						<input type="text" id="width">
+						<input name="widthUnitSelector" type="radio" id="mmWidthUnit" checked>
+						<label for="mmWidthUnit">mm</label>
+						<input name="widthUnitSelector" type="radio" id="inchWidthUnit">
+						<label for="inchWidthUnit">inches</label>
 					</li>
 					<li>
 						<label>Material Thickness</label>
-						<input type="text">
+						<input type="text" id="thickness">
+						<input name="thicknessUnitSelector" type="radio" id="mmThicknessUnit" checked>
+						<label for="mmThicknessUnit">mm</label>
+						<input name="thicknessUnitSelector" type="radio" id="gaugeThicknessUnit">
+						<label for="gaugeThicknessUnit">gauge</label>
 					</li>
 					<li>
 						<label>SW</label>
-						<input type="text">
+						<input type="text" id="sw">
+						<input name="swUnitSelector" type="radio" id="mmSwUnit" checked>
+						<label for="mmSwUnit">mm</label>
+						<input name="swUnitSelector" type="radio" id="inchSwUnit">
+						<label for="inchSwUnit">inches</label>
+					</li>
+					<li>
+						<label>Pitch</label>
+						<input type="text" id="pitch">
+						<input name="pitchUnitSelector" type="radio" id="mmPitchUnit" checked>
+						<label for="mmPitchUnit">mm</label>
+						<input name="pitchUnitSelector" type="radio" id="inchPitchUnit">
+						<label for="inchPitchUnit">inches</label>
+					</li>
+
+					<li>
+						<label>Perforation Type</label>
+						<input name="perfSelector" type="radio" id="hexagonal" checked>
+						<label for="hexagonal">Hexagonal</label>
+						<input name="perfSelector" type="radio" id="round">
+						<label for="round">Round</label>
+					</li>
+					<li>
+						<label>Material</label>
+						<input name="matSelector" type="radio" id="steel" checked>
+						<label for="steel">Steel</label>
+						<input name="matSelector" type="radio" id="aluminum">
+						<label for="aluminum">Aluminum</label>
 					</li>
 				</ul>
 			</form>
@@ -26,6 +65,16 @@
 	</div>
 
 	<div class="span-8">
-		8 width span
+		<fieldset>
+			<legend>Results</legend>
+			<!-- Right Column -->
+			<div id="sheetNameResult"></div>
+			<div id="volumeResult"></div>
+			<div id="weightResult"></div>
+			<div id="openAreaResult"></div>
+
+		</fieldset>
 	</div>
 </div>
+
+<script src="js/calculateall.js"></script>
