@@ -12,8 +12,8 @@
 */
  input[type=radio] + label {
 	display:inline-block;
-	margin:-2px;
-	padding: 4px 12px;
+	margin: 0px 1px 1px 0px;
+	padding: 3px 10px;
 	background-color: #e7e7e7;
 	border-color: #ddd;
 }
@@ -25,3 +25,6 @@
 	background-image: none;
 	background-color:#d0d0d0;
 }
+/*
+Create option to incorporate radio button labels inline with forms
+*/

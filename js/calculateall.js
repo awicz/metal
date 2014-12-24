@@ -35,7 +35,7 @@ function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
 	};
 }
 setPerfSheet = function() {
-	var l = document.getElementById("length"); //Length Input
+	var l = document.getElementById("length") // Length Input
 	var w = document.getElementById("width"); //Width Input
 	var t = document.getElementById("thickness"); //Material Thickness Input
 	var s = document.getElementById("sw"); //Schlüsselweite
@@ -69,13 +69,13 @@ $(document).ready(function() {
 	//Volume Results	
 	$("#length, #width, #thickness").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#volumeResult").html("Volume:  " + myPerfsheet.volume())
+		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en'))
 	})
 
 	//Weight Results --Need to add state change for material type
 	$("#length, #width, #thickness").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight())
+		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en'))
 	})
 
 	//Open Area Results --Need to add state change for hex vs. Perf
@@ -95,4 +95,15 @@ $(document).ready(function() {
 		myPerfsheet = setPerfSheet();
 		$("#weightResult").html("Weight:  " + myPerfsheet.weight())
 	})
+
+	//Unit Selection Conversion
+	$(".unitSelector").change(function() {
+		if ($("label[for='" + $(this) + "']") == "mm") {
+			b;
+		}
+	})
+
+
+
+
 })
