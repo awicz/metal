@@ -1,3 +1,4 @@
+//Template and methods for sheet object
 function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
 	this.len = len;
 	this.width = width;
@@ -34,13 +35,52 @@ function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
 		}
 	};
 }
+
+//Create the new sheet object
 setPerfSheet = function() {
-	var l = document.getElementById("length") // Length Input
-	var w = document.getElementById("width"); //Width Input
-	var t = document.getElementById("thickness"); //Material Thickness Input
-	var s = document.getElementById("sw"); //Schlüsselweite
-	var p = document.getElementById("pitch"); //Pitch
-	var pt = ""; //Perforation Type	
+	//Length Input
+	var l = 0;
+	if ($('#mmLengthUnit:checked').length) {
+		l = $('#length').val();
+	} else {
+		l = $('#length').val() * 25.4;
+	}
+
+	//Width Input
+	var w = 0;
+	if ($('#mmWidthUnit:checked').length) {
+		w = $('#width').val();
+	} else {
+		w = $('#width').val() * 25.4;
+	}
+
+	//Material Thickness Input
+	var t = 0;
+	if ($('#mmThicknessUnit:checked').length) {
+		t = $('#thickness').val();
+	} else {
+		t = $('#thickness').val() * 25.4;
+	}
+
+	//Schlüsselweite
+	var s = 0;
+	if ($('#mmSwUnit:checked').length) {
+		s = $('#sw').val();
+	} else {
+		s = $('#sw').val() * 25.4;
+	}
+
+	//Pitch
+	//var p = $('#pitch').val();
+	var p = 0;
+	if ($('#mmPitchUnit:checked').length) {
+		p = $('#pitch').val();
+	} else {
+		p = $('#pitch').val * 25.4;
+	}
+
+	//Perforation Type	
+	var pt = "";
 	if ($('#hexagonal:checked').length) {
 		pt = "hex"
 	} else if ($('#round:checked').length) {
@@ -49,7 +89,8 @@ setPerfSheet = function() {
 		pt = "error"
 	}
 
-	var m = ""; //Material Type
+	//Material Type
+	var m = "";
 	if ($('#steel:checked').length) {
 		m = "steel"
 	} else if ($('#aluminum:checked').length) {
@@ -58,8 +99,10 @@ setPerfSheet = function() {
 		m = "error"
 	}
 
-	return new perfSheet(l.value, w.value, t.value, s.value, p.value, pt, m);
+	return new perfSheet(l, w, t, s, p, pt, m);
 }
+
+//Load results based on Sheet Object properties
 $(document).ready(function() {
 	//Sheet Name Introduction
 	$("#sheetname").keyup(function() {
@@ -98,12 +141,9 @@ $(document).ready(function() {
 
 	//Unit Selection Conversion
 	$(".unitSelector").change(function() {
-		if ($("label[for='" + $(this) + "']") == "mm") {
-			b;
-		}
+		myPerfsheet = setPerfSheet();
+		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en'))
+		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en'))
 	})
-
-
-
 
 })
