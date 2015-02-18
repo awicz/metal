@@ -62,7 +62,7 @@ setPerfSheet = function() {
 		t = $('#thickness').val() * 25.4;
 	}
 
-	//Schlüsselweite
+	//Schlüsselweite --UNITS NOT WORKING CORRECTLY
 	var s = 0;
 	if ($('#mmSwUnit:checked').length) {
 		s = $('#sw').val();
@@ -70,8 +70,7 @@ setPerfSheet = function() {
 		s = $('#sw').val() * 25.4;
 	}
 
-	//Pitch
-	//var p = $('#pitch').val();
+	//Pitch --UNITS NOT WORKING CORRECTLY
 	var p = 0;
 	if ($('#mmPitchUnit:checked').length) {
 		p = $('#pitch').val();
@@ -82,68 +81,68 @@ setPerfSheet = function() {
 	//Perforation Type	
 	var pt = "";
 	if ($('#hexagonal:checked').length) {
-		pt = "hex"
+		pt = "hex";
 	} else if ($('#round:checked').length) {
-		pt = "round"
+		pt = "round";
 	} else {
-		pt = "error"
+		pt = "error";
 	}
 
 	//Material Type
 	var m = "";
 	if ($('#steel:checked').length) {
-		m = "steel"
+		m = "steel";
 	} else if ($('#aluminum:checked').length) {
-		m = "aluminum"
+		m = "aluminum";
 	} else {
-		m = "error"
+		m = "error";
 	}
 
 	return new perfSheet(l, w, t, s, p, pt, m);
-}
+};
 
 //Load results based on Sheet Object properties
 $(document).ready(function() {
 	//Sheet Name Introduction
 	$("#sheetname").keyup(function() {
-		$("#sheetNameResult").html($("#sheetname").val() + " has the following properties:")
-	})
+		$("#sheetNameResult").html($("#sheetname").val() + " has the following properties:");
+	});
 
 	//Volume Results	
 	$("#length, #width, #thickness").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en'))
-	})
+		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
+	});
 
-	//Weight Results --Need to add state change for material type
+	//Weight Results
 	$("#length, #width, #thickness").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en'))
-	})
+		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
+	});
 
-	//Open Area Results --Need to add state change for hex vs. Perf
+	//Open Area Results
 	$("#sw, #pitch").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%")
-	})
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
+	});
 
 	//Peforation Type Results
 	$("input[name='perfSelector']").change(function() {
 		myPerfsheet = setPerfSheet();
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%")
-	})
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
+	});
 
 	//Material Type Results
 	$("input[name='matSelector']").change(function() {
 		myPerfsheet = setPerfSheet();
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight())
-	})
+		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
+	});
 
 	//Unit Selection Conversion
-	$(".unitSelector").change(function() {
+	$("input[class ='unitSelector']").change(function() {
 		myPerfsheet = setPerfSheet();
-		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en'))
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en'))
-	})
+		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
+		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
+	});
 
-})
+});

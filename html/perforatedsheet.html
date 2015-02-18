@@ -25,8 +25,9 @@
 						<input type="number" id="thickness">
 						<input name="thicknessUnitSelector" type="radio" id="mmThicknessUnit" class="unitSelector" checked>
 						<label for="mmThicknessUnit">mm</label>
-						<input name="thicknessUnitSelector" type="radio" id="gaugeThicknessUnit" class="unitSelector">
+						<!--	<input name="thicknessUnitSelector" type="radio" id="gaugeThicknessUnit" class="unitSelector">
 						<label for="gaugeThicknessUnit">gauge</label>
+						Remove this comment for Gauge, Javascript not complete-->
 					</li>
 					<li>
 						<label>SW</label>
@@ -72,7 +73,12 @@
 			<br>
 			<h3>Only mm units work, and weights are not 100% accurate</h3>
 			<div id="sheetNameResult"></div>
-			<div id="volumeResult"></div>
+			<div id="volumeResult">
+				<label>Metric</label>
+				<input name="volumeUnitSelector" type="radio" id="metric" checked>
+				<label>Imperial</label>
+				<input name="volumeUnitSelector" type="radio" id="imperial">
+			</div>
 			<div id="weightResult"></div>
 			<div id="openAreaResult"></div>
 		</fieldset>
@@ -80,3 +86,4 @@
 </div>
 
 <script src="js/calculateall.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r69/three.min.js"></script>
