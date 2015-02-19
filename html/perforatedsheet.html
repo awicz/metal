@@ -74,10 +74,16 @@
 			<div id="weightResult"></div>
 			<div id="openAreaResult"></div>
 			<div id="resultUnits">
-				<label>Metric</label>
-				<input name="volumeUnitSelector" type="radio" id="metric" checked>
-				<label>Imperial</label>
-				<input name="volumeUnitSelector" type="radio" id="imperial">
+				<form>
+					<ul>
+						<li>
+							<input name="volumeUnitSelector" type="radio" id="metric" checked>
+							<label for="metric">Metric</label>
+							<input name="volumeUnitSelector" type="radio" id="imperial">
+							<label for="imperial">Imperial</label>
+						</li>
+					</ul>
+				</form>
 			</div>
 		</fieldset>
 	</div>
