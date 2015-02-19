@@ -123,13 +123,13 @@ $(document).ready(function() {
 	//Open Area Results
 	$("#sw, #pitch").keyup(function() {
 		myPerfsheet = setPerfSheet();
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
 	});
 
 	//Peforation Type Results
 	$("input[name='perfSelector']").change(function() {
 		myPerfsheet = setPerfSheet();
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
 	});
 
 	//Material Type Results
@@ -143,7 +143,7 @@ $(document).ready(function() {
 		myPerfsheet = setPerfSheet();
 		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
 		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
 	});
 
 });
