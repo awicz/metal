@@ -62,7 +62,7 @@ setPerfSheet = function() {
 		t = $('#thickness').val() * 25.4;
 	}
 
-	//Schlüsselweite --UNITS NOT WORKING CORRECTLY
+	//Schlüsselweite
 	var s = 0;
 	if ($('#mmSwUnit:checked').length) {
 		s = $('#sw').val();
@@ -70,7 +70,7 @@ setPerfSheet = function() {
 		s = $('#sw').val() * 25.4;
 	}
 
-	//Pitch --UNITS NOT WORKING CORRECTLY
+	//Pitch
 	var p = 0;
 	if ($('#mmPitchUnit:checked').length) {
 		p = $('#pitch').val();
