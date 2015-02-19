@@ -104,46 +104,20 @@ setPerfSheet = function() {
 //Load results based on Sheet Object properties
 $(document).ready(function() {
 	//Sheet Name Introduction
-	$("#sheetname").keyup(function() {
+	$("#sheetname, #length, #width, #thickness, #sw, #pitch").keyup(function() {
+		myPerfsheet = setPerfSheet();
 		$("#sheetNameResult").html($("#sheetname").val() + " has the following properties:");
-	});
-
-	//Volume Results	
-	$("#length, #width, #thickness").keyup(function() {
-		myPerfsheet = setPerfSheet();
 		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
-	});
-
-	//Weight Results
-	$("#length, #width, #thickness").keyup(function() {
-		myPerfsheet = setPerfSheet();
 		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-	});
-
-	//Open Area Results
-	$("#sw, #pitch").keyup(function() {
-		myPerfsheet = setPerfSheet();
 		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
 	});
 
 	//Peforation Type Results
-	$("input[name='perfSelector']").change(function() {
+	$("input[name='perfSelector'], input[name='matSelector'], input[class ='unitSelector']").change(function() {
 		myPerfsheet = setPerfSheet();
 		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
-	});
-
-	//Material Type Results
-	$("input[name='matSelector']").change(function() {
-		myPerfsheet = setPerfSheet();
 		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-	});
-
-	//Unit Selection Conversion
-	$("input[class ='unitSelector']").change(function() {
-		myPerfsheet = setPerfSheet();
 		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
 	});
 
 });
