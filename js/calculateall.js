@@ -1,5 +1,5 @@
 //Template and methods for sheet object
-function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
+function perfSheet(len, width, thickness, sw, pitch, perfType, material, volumeUnits, volumeFactor, weightUnits, weightFactor) {
 	this.len = len;
 	this.width = width;
 	this.thickness = thickness;
@@ -7,11 +7,14 @@ function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
 	this.pitch = pitch;
 	this.perfType = perfType;
 	this.material = material;
+	this.volumeUnits = volumeUnits;
+	this.volumeFactor = volumeFactor;
+	this.weightUnits = weightUnits;
+	this.weightFactor = weightFactor;
 
 	//Volume Method
 	this.volume = function() {
-		var twoup = "2";
-		return this.len * this.width * this.thickness;
+		return (this.len * this.width * this.thickness) / this.volumeFactor;
 	};
 	//Weight Method
 	this.weight = function() {
@@ -19,10 +22,10 @@ function perfSheet(len, width, thickness, sw, pitch, perfType, material) {
 		switch (this.material) {
 			case "steel":
 				density = 7.9068;
-				return (density * this.volume()) / 1000000;
+				return ((density * (this.len * this.width * this.thickness)) / 1000000) * this.weightFactor;
 			case "aluminum":
 				density = 2.6988;
-				return (density * this.volume()) / 1000000;
+				return ((density * (this.len * this.width * this.thickness)) / 1000000) * this.weightFactor;
 		}
 	};
 	//Open Area method
@@ -98,26 +101,39 @@ setPerfSheet = function() {
 		m = "error";
 	}
 
-	return new perfSheet(l, w, t, s, p, pt, m);
+	//Metric or Imperial
+	if ($('#imperial:checked').length) {
+		vu = " inch<sup>3</sup>";
+		vf = 16387.064;
+		wu = " Lbs";
+		wf = 2.20462;
+	} else {
+		vu = " mm<sup>3</sup>",
+		vf = 1,
+		wu = " Kg",
+		wf = 1;
+	}
+
+	return new perfSheet(l, w, t, s, p, pt, m, vu, vf, wu, wf);
 };
 
 //Load results based on Sheet Object properties
 $(document).ready(function() {
-	//Sheet Name Introduction
+	//Modifies results based on Form inputs
 	$("#sheetname, #length, #width, #thickness, #sw, #pitch").keyup(function() {
-		myPerfsheet = setPerfSheet();
-		$("#sheetNameResult").html($("#sheetname").val() + " has the following properties:");
-		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
+		myPerfSheet = setPerfSheet();
+		//$("#sheetNameResult").html($("#sheetname").val() + " has the following properties:");
+		$("#volumeResult").html("Volume:  " + myPerfSheet.volume().toLocaleString('en') + myPerfSheet.volumeUnits);
+		$("#weightResult").html("Weight:  " + myPerfSheet.weight().toLocaleString('en') + myPerfSheet.weightUnits);
+		$("#openAreaResult").html("Open Area:  " + myPerfSheet.openArea().toFixed(2) + "%");
 	});
 
-	//Peforation Type Results
-	$("input[name='perfSelector'], input[name='matSelector'], input[class ='unitSelector']").change(function() {
-		myPerfsheet = setPerfSheet();
-		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea().toFixed(2) + "%");
-		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
-		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
+	//Modifies results based on radio button selection
+	$("input[name='perfSelector'], input[name='matSelector'], input[class ='unitSelector'], input[name='resultUnitSelector']").change(function() {
+		myPerfSheet = setPerfSheet();
+		$("#volumeResult").html("Volume:  " + myPerfSheet.volume().toLocaleString('en') + myPerfSheet.volumeUnits);
+		$("#weightResult").html("Weight:  " + myPerfSheet.weight().toLocaleString('en') + myPerfSheet.weightUnits);
+		$("#openAreaResult").html("Open Area:  " + myPerfSheet.openArea().toFixed(2) + "%");
 	});
 
 });
