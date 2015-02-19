@@ -75,7 +75,7 @@ setPerfSheet = function() {
 	if ($('#mmPitchUnit:checked').length) {
 		p = $('#pitch').val();
 	} else {
-		p = $('#pitch').val * 25.4;
+		p = $('#pitch').val() * 25.4;
 	}
 
 	//Perforation Type	
@@ -143,6 +143,7 @@ $(document).ready(function() {
 		myPerfsheet = setPerfSheet();
 		$("#volumeResult").html("Volume:  " + myPerfsheet.volume().toLocaleString('en') + " mm<sup>3</sup>");
 		$("#weightResult").html("Weight:  " + myPerfsheet.weight().toLocaleString('en') + " Kg");
+		$("#openAreaResult").html("Open Area:  " + myPerfsheet.openArea() + "%");
 	});
 
 });
